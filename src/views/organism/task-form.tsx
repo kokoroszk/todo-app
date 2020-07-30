@@ -10,7 +10,7 @@ import DetailForm from 'views/molecule/detail-form';
 
 import Store from 'core/store/store';
 import { UserState } from 'core/domain/user';
-import { postNewTask } from "core/usecase/todo";
+import { addNewTask } from "core/usecase/todo";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,7 +50,7 @@ export default function TaskForm() {
 
   const dispatch = useDispatch();
   const handleClick = () => {
-    postNewTask(dispatch, title, detail, name);
+    addNewTask(dispatch, title, detail, name);
     setTitle('');
     setDetail('');
   }
