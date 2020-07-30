@@ -3,6 +3,6 @@ import { reducers, UserState } from 'core/domain/user';
 
 export default createSlice({
   name: 'user',
-  initialState: {name: 'unknown'} as UserState,
+  initialState: { name: localStorage.getItem('username') || 'unknown' } as UserState,
   reducers
 });
