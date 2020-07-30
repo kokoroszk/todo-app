@@ -1,10 +1,11 @@
-import React from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { createSelector } from 'reselect';
 import Store from 'core/store/store';
 
 import TodoTemplate, {TodoTemplateProps} from 'views/template/todo';
 import { Task, TodoState } from 'core/domain/todo';
+import { reloadTasks } from 'core/usecase/todo';
 
 const tasksSelector = createSelector(
   (state: ReturnType<typeof Store.getState>) => state.todo,
@@ -12,6 +13,13 @@ const tasksSelector = createSelector(
 )
 
 export default function TodoPage() {
+
+  const dispatch = useDispatch();
+  const [ isFirstRendering, setFirstRendering ] = useState(true);
+  if (isFirstRendering) {
+    reloadTasks(dispatch);
+    setFirstRendering(false);
+  }
 
   const tasks: Task[] = useSelector( tasksSelector, shallowEqual )
 

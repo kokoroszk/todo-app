@@ -1,4 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { apiConfig } from 'config';
 
 export type Task = {
   id: number,
@@ -15,34 +17,25 @@ export type NewTask = {
 
 export type TodoState = {
   tasks: Task[],
-  nextId: number
 };
 
-const addTaskAction = (state: TodoState, action: PayloadAction<Task>) => {
-  return {
-    ...state,
-    tasks: [action.payload].concat(state.tasks),
-    nextId: state.nextId + 1
-  };
-};
-
-const addNewTaskAction = (state: TodoState, action: PayloadAction<NewTask>) => {
-  const task = { ...action.payload, id: state.nextId };
-  return {
-    ...state,
-    tasks: [task].concat(state.tasks),
-    nextId: state.nextId + 1
-  };
-};
-
-const deleteTaskAction = (state: TodoState, action: PayloadAction<number>) => ({
+const updateTasksAction = (state: TodoState, action: PayloadAction<Task[]>) => ({
   ...state,
-  tasks: state.tasks.filter(t => t.id !== action.payload),
+  tasks: action.payload
 })
 
 export const reducers = {
-  addTaskAction,
-  addNewTaskAction,
-  deleteTaskAction
+  updateTasksAction
+};
+
+export const postNewTask = (task: NewTask) => {
+  return axios.post(apiConfig.url + 'task', task);
 }
 
+export const fetchAllTasks = () => {
+  return axios.get<Task[]>(apiConfig.url + 'task');
+}
+
+export const deleteTask = (id: number) => {
+  return axios.delete(apiConfig.url + 'task/' + id);
+}
