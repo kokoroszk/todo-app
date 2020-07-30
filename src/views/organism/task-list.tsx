@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Task, { TaskProps } from 'views/molecule/task';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
   root: {
@@ -10,12 +11,13 @@ const useStyles = makeStyles({
     position: 'relative',
     padding: '24px',
     backgroundColor: '#f5f5f5',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   }
 });
 
 export interface TaskListProps {
-  tasks : TaskProps[]
+  tasks : TaskProps[] | undefined
 };
 
 export default function TaskList({tasks}: TaskListProps) {
@@ -23,7 +25,7 @@ export default function TaskList({tasks}: TaskListProps) {
 
   return (
     <div className={classes.root}>
-      {tasks.map( t => ( <Task {...t} /> ) )}
+      { tasks === undefined ? <CircularProgress /> : tasks.map(t => (<Task {...t} /> )) }
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { reducers, TodoState } from 'core/domain/todo';
 
 const initialState: TodoState = {
-  tasks: []
+  tasks: undefined
 }
 
 export default createSlice({

@@ -16,7 +16,7 @@ export type NewTask = {
 }
 
 export type TodoState = {
-  tasks: Task[],
+  tasks: Task[] | undefined,
 };
 
 const updateTasksAction = (state: TodoState, action: PayloadAction<Task[]>) => ({

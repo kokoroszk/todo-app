@@ -17,11 +17,14 @@ export default function TodoPage() {
   const dispatch = useDispatch();
   const [ isFirstRendering, setFirstRendering ] = useState(true);
   if (isFirstRendering) {
-    reloadTasks(dispatch);
-    setFirstRendering(false);
+    // XXX 初回ロード時のUIがわかりやすいように遅延させてます
+    setTimeout(() => {
+      reloadTasks(dispatch);
+      setFirstRendering(false);
+    },1000);
   }
 
-  const tasks: Task[] = useSelector( tasksSelector, shallowEqual )
+  const tasks: Task[] | undefined = useSelector( tasksSelector, shallowEqual )
 
   const todoData: TodoTemplateProps = {
     taskListProps: {
