@@ -1,0 +1,48 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import { Provider } from 'react-redux';
+import Store from 'core/store/store';
+import { MemoryRouter as Router } from 'react-router-dom';
+
+import Header from "views/organism/header";
+import TaskForm from "views/organism/task-form"
+import TaskList from "views/organism/task-list"
+
+<Meta title="Organisms" />
+
+Sample doc for organisms.
+
+# header
+
+## Preview
+
+<Preview>
+  <Story name="header">
+    <Provider store={Store}>
+      <Router>
+        <Header />
+      </Router>
+    </Provider>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Header} />
+
+# TaskList
+
+<Preview>
+  <Story name="tasklist">
+    <Provider store={Store}>
+      <TaskList tasks={[
+          {id:1, title:"titile1", detail:"detail1", assignee:"me"},
+          {id:2, title:"titile2", detail:"detail2", assignee:"you"}
+      ]} />
+  </Provider>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={TaskList} />

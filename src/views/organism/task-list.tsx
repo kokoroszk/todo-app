@@ -17,6 +17,12 @@ const useStyles = makeStyles({
 });
 
 export interface TaskListProps {
+
+  /**
+   * show tasks in props.<br>
+   * If tasks is undefined, show CircularProgress icon instead.
+   * @param tasks: TaskProps | undefined.
+   */
   tasks : TaskProps[] | undefined
 };
 
