@@ -1,0 +1,21 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import { Provider } from 'react-redux';
+import Store from 'core/store/store';
+
+import TaskForm from "views/organism/task-form"
+
+<Meta title="organism" />
+
+a form for create new task.  
+call `addTask(dispatch, title, detail, assignee)` in `core/usecase/todo` when ADD button is clicked.
+
+<Preview>
+  <Story name="taks-form">
+    <Provider store={Store} >
+      <TaskForm />
+    </Provider>
+  </Story>
+</Preview>
+
+<Props of={TaskForm} />

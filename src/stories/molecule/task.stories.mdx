@@ -1,0 +1,27 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { number, text } from "@storybook/addon-knobs";
+
+import { Provider } from 'react-redux';
+
+import Task from "views/molecule/task";
+import Store from "core/store/store";
+
+<Meta title="molecule" />
+
+show task.  
+call `deleteTask(dispatch, id)` in `core/usecase/todo` when DELETE label is clicked.
+
+<Preview>
+  <Story name="task">
+    <Provider store={Store}>
+      <Task
+        id={number("id", 1)}
+        title={text("title", "title1")}
+        detail={text("detail", "detail1")}
+        assignee={text("assignee", "assignee1")}
+      />
+    </Provider>
+  </Story>
+</Preview>
+
+<Props of={Task} />

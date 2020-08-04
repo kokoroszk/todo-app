@@ -1,0 +1,44 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+
+import { Provider } from 'react-redux';
+import Store from 'core/store/store';
+
+import TaskList from "views/organism/task-list"
+
+<Meta title="organism/task-list" />
+
+show tasks.
+
+<Preview>
+  <Story name="with-tasks">
+    <Provider store={Store} >
+      <TaskList tasks={
+        object("tasks", [
+          {
+            id: 1,
+            title: "title1",
+            detail: "detail1",
+            assignee: "assignee1"
+          },
+          {
+            id: 2,
+            title: "title-two",
+            detail: "detail-two",
+            assignee: "assignee-two"
+          }
+        ])
+      }/>
+    </Provider>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="with-undefined">
+    <Provider store={Store} >
+      <TaskList tasks={undefined} />
+    </Provider>
+  </Story>
+</Preview>
+
+<Props of={TaskList} />

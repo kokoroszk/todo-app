@@ -1,0 +1,15 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import DetailForm from "views/molecule/detail-form"
+
+<Meta title="molecule" />
+
+textarea(multiple lines) for task's detail.  
+
+<Preview>
+  <Story name="detailForm">
+    <DetailForm inputRef={/* ref */ undefined}/>
+  </Story>
+</Preview>
+
+<Props of={DetailForm} />

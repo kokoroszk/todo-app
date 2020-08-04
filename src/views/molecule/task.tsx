@@ -28,9 +28,24 @@ const useStyles = makeStyles({
 });
 
 export interface TaskProps {
+    /**
+     * id.
+     */
     id: number,
+
+    /**
+     * title of task.
+     */
     title: string,
+
+    /**
+     * detail of task.
+     */
     detail: string,
+
+    /**
+     * assignee of taks.
+     */
     assignee: string
 };
 
