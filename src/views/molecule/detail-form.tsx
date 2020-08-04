@@ -15,11 +15,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface DetailFormProps {
-  value: string,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputRef: React.MutableRefObject<HTMLInputElement | undefined>
 };
 
-export default function MultilineTextFields({value, onChange}: DetailFormProps) {
+export default function MultilineTextFields({inputRef}: DetailFormProps) {
   const classes = useStyles();
 
   return (
@@ -31,9 +30,8 @@ export default function MultilineTextFields({value, onChange}: DetailFormProps) 
           multiline
           rows={3}
           rowsMax={4}
-          value={value}
-          onChange={onChange}
           variant="outlined"
+          inputRef={inputRef}
         />
       </div>
   );

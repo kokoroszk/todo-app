@@ -15,11 +15,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface TitleFormProps {
-  value: string,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputRef: React.MutableRefObject<HTMLInputElement | undefined>
 };
 
-export default function TitleForm({value, onChange}: TitleFormProps) {
+export default function TitleForm({inputRef}: TitleFormProps) {
   const classes = useStyles();
 
   return (
@@ -28,8 +27,7 @@ export default function TitleForm({value, onChange}: TitleFormProps) {
     <TextField
       id="outlined-multiline-flexible"
       label="input new name."
-      value={value}
-      onChange={onChange}
+      inputRef={inputRef}
       variant="outlined"
     />
   </div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -45,24 +45,29 @@ export default function TaskForm() {
   const classes = useStyles();
 
   const name = useSelector(userSelector);
-  const [title, setTitle] = useState("");
-  const [detail, setDetail] = useState("");
+
+  const titleRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
+  const detailRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
 
   const dispatch = useDispatch();
   const handleClick = () => {
-    addNewTask(dispatch, title, detail, name);
-    setTitle('');
-    setDetail('');
+
+    const titleVal = titleRef.current?.value || '';
+    const detailVal = detailRef.current?.value || '';
+    addNewTask(dispatch, titleVal, detailVal, name);
+
+    if (titleRef.current) titleRef.current.value = '';
+    if (detailRef.current) detailRef.current.value = '';
   }
 
   return (
     <div className={classes.root}>
       <div style={{width:'auto', backgroundColor: 'white'}} >
         <div className={classes.form}>
-          <TitleForm value={title} onChange={(e) => {setTitle(e.target.value)}} />
+          <TitleForm inputRef={titleRef} />
         </div>
         <div className={classes.form}>
-          <DetailForm value={detail} onChange={(e) => {setDetail(e.target.value)}} />
+          <DetailForm inputRef={detailRef} />
         </div>
         <div className={classes.form}>
           <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>Add</Button>

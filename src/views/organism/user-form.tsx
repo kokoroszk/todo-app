@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import { useDispatch } from 'react-redux';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
@@ -34,19 +34,19 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function TaskForm() {
   const classes = useStyles();
 
-  const [newName, setNewName] = useState("");
+  const nameRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
 
   const dispatch = useDispatch();
   const handleClick = () => {
-    changeName(dispatch, newName);
-    setNewName('');
+    changeName(dispatch, nameRef.current?.value || '');
+    if(nameRef.current) nameRef.current.value = '';
   }
 
   return (
     <div className={classes.root}>
       <div style={{width:'auto', backgroundColor: 'white'}} >
         <div className={classes.form}>
-          <NameForm value={newName} onChange={(e) => {setNewName(e.target.value)}} />
+          <NameForm inputRef={nameRef} />
         </div>
         <div className={classes.form}>
           <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>Submit</Button>
