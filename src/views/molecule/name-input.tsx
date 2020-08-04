@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import TitleIcon from '@material-ui/icons/Title';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,21 +15,21 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type TitleFormProps = {
+interface NameInputProps {
   inputRef: React.MutableRefObject<HTMLInputElement | undefined>
 };
 
-export default function TitleForm({inputRef}: TitleFormProps) {
+export default function NameInput({inputRef}: NameInputProps) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-    <TitleIcon />
+    <AccountCircle />
     <TextField
       id="outlined-multiline-flexible"
-      label="input task title."
-      variant="outlined"
+      label="input new name."
       inputRef={inputRef}
+      variant="outlined"
     />
   </div>
   );

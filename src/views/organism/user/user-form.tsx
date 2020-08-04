@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 import { changeName } from 'core/usecase/user';
 
-import NameForm from 'views/molecule/name-form';
+import NameForm from 'views/molecule/name-input';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

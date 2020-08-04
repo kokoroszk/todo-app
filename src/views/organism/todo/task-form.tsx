@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 
 import { addNewTask } from "core/usecase/todo";
 
-import TitleForm from 'views/molecule/title-form';
-import DetailForm from 'views/molecule/detail-form';
+import TitleInput from 'views/molecule/title-input';
+import DetailInput from 'views/molecule/detail-input';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,10 +58,10 @@ export default function TaskForm({userName}: TaskFormProps) {
     <div className={classes.root}>
       <div style={{width:'auto', backgroundColor: 'white'}} >
         <div className={classes.form}>
-          <TitleForm inputRef={titleRef} />
+          <TitleInput inputRef={titleRef} />
         </div>
         <div className={classes.form}>
-          <DetailForm inputRef={detailRef} />
+          <DetailInput inputRef={detailRef} />
         </div>
         <div className={classes.form}>
           <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>Add</Button>

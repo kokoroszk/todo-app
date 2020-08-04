@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header, {HeaderProps} from 'views/organism/header'
-import UserForm from 'views/organism/user-form';
+import Header, {HeaderProps} from 'views/organism/common/header'
+import UserForm from 'views/organism/user/user-form';
 
 
 export interface UserTemplateProps {

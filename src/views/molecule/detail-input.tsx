@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface DetailFormProps {
+interface DetailInputProps {
   inputRef: React.MutableRefObject<HTMLInputElement | undefined>
 };
 
-export default function MultilineTextFields({inputRef}: DetailFormProps) {
+export default function DetailInput({inputRef}: DetailInputProps) {
   const classes = useStyles();
 
   return (
