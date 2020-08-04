@@ -14,6 +14,7 @@ export default function UserTemplate({name, headerProps}: UserTemplateProps) {
     <>
       <Header {...headerProps} />
       <p>name: {name}</p>
+      { name === 'unknown' && <p style={{color:"red"}}> set your name other than 'unknown'</p> }
       <UserForm />
     </>
   );

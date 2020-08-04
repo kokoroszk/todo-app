@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,11 +36,13 @@ export default function TaskForm() {
   const classes = useStyles();
 
   const nameRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
+  const history = useHistory();
 
   const dispatch = useDispatch();
   const handleClick = () => {
     changeName(dispatch, nameRef.current?.value || '');
     if(nameRef.current) nameRef.current.value = '';
+    history.push("/");
   }
 
   return (
