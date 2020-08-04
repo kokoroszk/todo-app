@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { reducers, UserState } from 'core/domain/user';
+import { UserState } from 'core/domain/user/model';
+import { reducers } from 'core/domain/user/service';
 
 export default createSlice({
   name: 'user',

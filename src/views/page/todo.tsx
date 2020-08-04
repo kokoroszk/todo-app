@@ -4,8 +4,8 @@ import { createSelector } from 'reselect';
 import Store from 'core/store/store';
 
 import TodoTemplate, {TodoTemplateProps} from 'views/template/todo';
-import { Task, TodoState } from 'core/domain/todo';
-import { UserState } from 'core/domain/user';
+import { Task, TodoState } from 'core/domain/todo/model';
+import { UserState } from 'core/domain/user/model';
 import { reloadTasks } from 'core/usecase/todo';
 
 const tasksSelector = createSelector(

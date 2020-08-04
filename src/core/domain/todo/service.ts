@@ -1,23 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { apiConfig } from 'config';
-
-export type Task = {
-  id: number,
-  title: string,
-  detail: string,
-  assignee: string
-}
-
-export type NewTask = {
-  title: string,
-  detail: string,
-  assignee: string
-}
-
-export type TodoState = {
-  tasks: Task[] | undefined,
-};
+import { TodoState, Task, NewTask } from './model';
 
 const updateTasksAction = (state: TodoState, action: PayloadAction<Task[]>) => ({
   ...state,

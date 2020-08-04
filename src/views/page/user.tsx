@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 import Store from 'core/store/store';
 
 import UserTemplate, {UserTemplateProps} from 'views/template/user';
-import { UserState } from 'core/domain/user';
+import { UserState } from 'core/domain/user/model';
 
 const nameSelector = createSelector(
   (state: ReturnType<typeof Store.getState>) => state.user,

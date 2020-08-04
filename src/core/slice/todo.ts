@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { reducers, TodoState } from 'core/domain/todo';
+import { TodoState } from 'core/domain/todo/model';
+import { reducers } from 'core/domain/todo/service';
 
 const initialState: TodoState = {
   tasks: undefined
