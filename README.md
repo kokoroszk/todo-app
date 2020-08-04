@@ -202,3 +202,15 @@ src/
     - `undefined` の場合、`<CircleProgress />` を出力する
   - [task-list.stories.mdx](src/stories/organism/task-list.stories.mdx)
     - 値が存在する場合と `undefined` の場合に分けた story を作成している
+
+## この設計でドキュメント作るなら
+- コンポーネント仕様
+  - atom ~ template (storybook)
+    - propsに対するUI
+    - 動作仕様、callするusecase
+  - page (コードがシンプルになるはずなので不要な気がする)
+    - selectorの定義
+    - templateへのprops
+- ロジック仕様 (人間様の言葉で書き直すか。markdown?)
+  - domain-service
+  - usecase(domain-serviceのcall)
