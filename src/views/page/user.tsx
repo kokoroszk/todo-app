@@ -16,7 +16,10 @@ export default function TodoPage() {
   const name: string = useSelector( nameSelector )
 
   const userProps: UserTemplateProps = {
-    name: name
+    name: name,
+    headerProps: {
+      userName: name
+    }
   }
 
   return (

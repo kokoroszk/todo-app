@@ -5,11 +5,17 @@ import Store from 'core/store/store';
 
 import TodoTemplate, {TodoTemplateProps} from 'views/template/todo';
 import { Task, TodoState } from 'core/domain/todo';
+import { UserState } from 'core/domain/user';
 import { reloadTasks } from 'core/usecase/todo';
 
 const tasksSelector = createSelector(
   (state: ReturnType<typeof Store.getState>) => state.todo,
   (todo: TodoState) => todo.tasks
+)
+
+const userSelector = createSelector(
+  (state: ReturnType<typeof Store.getState>) => state.user,
+  (user: UserState) => user.name
 )
 
 export default function TodoPage() {
@@ -25,14 +31,21 @@ export default function TodoPage() {
   }
 
   const tasks: Task[] | undefined = useSelector( tasksSelector, shallowEqual )
+  const userName: string = useSelector(userSelector);
 
-  const todoData: TodoTemplateProps = {
+  const props: TodoTemplateProps = {
+    headerProps: {
+      userName: userName
+    },
+    taskFormProps: {
+      userName: userName
+    },
     taskListProps: {
       tasks: tasks
     }
   }
 
   return (
-    <TodoTemplate {...todoData} />
+    <TodoTemplate {...props} />
   );
 }

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+import { useDispatch } from 'react-redux';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -8,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import TitleForm from 'views/molecule/title-form';
 import DetailForm from 'views/molecule/detail-form';
 
-import Store from 'core/store/store';
-import { UserState } from 'core/domain/user';
 import { addNewTask } from "core/usecase/todo";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,15 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const userSelector = createSelector(
-  (state: ReturnType<typeof Store.getState>) => state.user,
-  (user: UserState) => user.name
-)
+export interface TaskFormProps {
+  userName: string
+}
 
-export default function TaskForm() {
+export default function TaskForm({userName}: TaskFormProps) {
   const classes = useStyles();
-
-  const name = useSelector(userSelector);
 
   const titleRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
   const detailRef: React.MutableRefObject<HTMLInputElement | undefined> = useRef();
@@ -54,7 +48,7 @@ export default function TaskForm() {
 
     const titleVal = titleRef.current?.value || '';
     const detailVal = detailRef.current?.value || '';
-    addNewTask(dispatch, titleVal, detailVal, name);
+    addNewTask(dispatch, titleVal, detailVal, userName);
 
     if (titleRef.current) titleRef.current.value = '';
     if (detailRef.current) detailRef.current.value = '';

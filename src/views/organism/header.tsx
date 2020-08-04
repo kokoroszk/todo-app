@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,9 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
-import Store from 'core/store/store';
-import { UserState } from 'core/domain/user';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,15 +23,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const userSelector = createSelector(
-  (state: ReturnType<typeof Store.getState>) => state.user,
-  (user: UserState) => user.name
-)
+export interface HeaderProps {
+  userName: string
+}
 
-export default function Header() {
+export default function Header({userName}: HeaderProps) {
   const classes = useStyles();
-
-  const userName = useSelector(userSelector);
 
   return (
     <div className={classes.root}>
