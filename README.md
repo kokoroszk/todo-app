@@ -123,13 +123,15 @@ src/
 
 ## 実装ガイドライン
 
+残念ながら纏まってない。つらつらと適当に。
+
 ### 共通
 - データの流れを理解する
   - データの依存関係を理解する
     - コンポーネント(atom~template)は `props` に依存して `state` に依存しない
-    - page は `state` を監視して、変更があった場合に子を再描画する(`props`を変更する)
+    - page は `state` を監視して、変更があった場合に子を再描画する(`props`を変更する)
     - コンポーネント(atom~template)は `usecase` を呼び出すことで、`state` を更新する
-  - 「描画(page)」と「UIイベント(usecase)」に直接的な結びつきがないことを理解する
+    - 「更新」と「描画」に直接的な結びつきがないことを理解する
     - pageは `selector` に定義された通りに `state` に設定された値を取得して描画し続ける
     - `usecase` は、`usecase` 及び `domain` に定義された通りに `state` を更新する
     - `usecase` の戻り値は基本的にUIに影響を与えず、`page` は `state` を更新しない
@@ -150,7 +152,7 @@ src/
     - とはいえ、backendに移譲する量が多いので難しいかもしれない
 - `usecase` で `dispatch` を行うこと
   - コンポーネントがロジックを知らなくてよいので、UIだけで開発を進められる
-  - `usecase` を `async` にして実装することで、非同期のcallback地獄を避けられる
+  - `usecase` を `async` にして実装することで、非同期のcallback地獄を避けられる
     - callbackでもいいけど
 - `usecase` は可能な限り、値をコンポーネントに返却しない
   - データの方向を一定に保ちたい(state -> page -> component)
@@ -160,7 +162,7 @@ src/
 ### views
 - `atom` -> `molecule` -> `organism` -> `template` の順に実装する
   - 矢印の逆向きにしか依存しないこと
-- 小さい部品ではサイズに固定値を指定せず、用途に向けてまとめる際に外側で制御すると再利用性が高い
+- 小さい部品ではサイズに固定値を指定せず、用途に向けてまとめる際に外側で制御すると再利用性が高い
 - `atom`, `molecule`, `organism`, `template` は `props` に依存し、 `state` に依存しない
 - `atom`, `molecule`, `organism`, `template` は `usecase`, `domain/*/model` のみに依存する
 - `template` の `props` は `organism` ごとの `key` で定義することで、`props` が単純になって良い
