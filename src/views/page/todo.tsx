@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { createSelector } from 'reselect';
-import Store from 'core/store/store';
 
-import TodoTemplate, {TodoTemplateProps} from 'views/template/todo';
+import Store from 'core/store/store';
 import { Task, TodoState } from 'core/domain/todo/model';
 import { UserState } from 'core/domain/user/model';
 import { reloadTasks } from 'core/usecase/todo';
+
+import TodoTemplate, {TodoTemplateProps} from 'views/template/todo';
 
 const tasksSelector = createSelector(
   (state: ReturnType<typeof Store.getState>) => state.todo,

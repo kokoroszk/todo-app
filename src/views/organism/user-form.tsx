@@ -5,8 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import NameForm from 'views/molecule/name-form';
 import { changeName } from 'core/usecase/user';
+
+import NameForm from 'views/molecule/name-form';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

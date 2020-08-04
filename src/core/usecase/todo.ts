@@ -1,12 +1,10 @@
 import { Dispatch } from "redux";
 
-import { NewTask } from 'core/domain/todo/model';
 import { fetchAllTasks, postNewTask as postTask, deleteTask as delTask } from "core/domain/todo/service";
 import { updateTasksAction } from "core/action/todo";
 
 export const addNewTask =  async (dispatch: Dispatch, taskTitle: string, taskDetail: string, assignee: string) => {
-  const task: NewTask = {title: taskTitle, detail: taskDetail, assignee: assignee};
-  await postTask(task);
+  await postTask({title: taskTitle, detail: taskDetail, assignee: assignee});
   reloadTasks(dispatch);
 }
 

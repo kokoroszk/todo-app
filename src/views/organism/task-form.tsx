@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+import { addNewTask } from "core/usecase/todo";
+
 import TitleForm from 'views/molecule/title-form';
 import DetailForm from 'views/molecule/detail-form';
-
-import { addNewTask } from "core/usecase/todo";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

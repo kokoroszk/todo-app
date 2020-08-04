@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
-import Task, { TaskProps } from 'views/molecule/task';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+import Task, { TaskProps } from 'views/molecule/task';
 
 const useStyles = makeStyles({
   root: {

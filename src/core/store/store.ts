@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import TodoSlice from 'core/slice/todo';
 import UserSlice from 'core/slice/user';
 
